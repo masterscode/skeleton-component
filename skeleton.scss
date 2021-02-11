@@ -28,9 +28,51 @@
 
 .card{
     flex: 0 0 280px;//width: 280px;//demo --using flex-basis since its already a flex element
-    
-}
+    height: var(--card-height);
+    border: medium solid whitesmoke;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 45px rgba($color: #000000, $alpha:.051);
 
+
+    &:empty::after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(90deg,
+        rgba(lightgrey, 0) 0 ,
+        rgba(lightgrey, .3) 50%,
+        rgba(lightgrey, 0) 100%
+        ),
+        var(--title-skeleton),
+        var(--desc-line-skeleton),
+        var(--avatar-skeleton),
+        var(--footer-skeleton),
+        var(--card-skeleton);
+
+        background-size: 
+        var(--blur-size),
+        var(--title-width) var(--title-height),
+        var(--desc-line-1-width) var(--desc-line-height),
+        var(--desc-line-2-width) var(--desc-line-height),
+        100% var(--footer-height),
+        100% 100%;
+
+        background-position: 
+        -150% 0,
+        var(--title-position),
+        var(--desc-line-1-position),
+        var(--desc-line-2-position),
+        var(--avatar-position),
+        var(--footer-position),
+        0 0;
+
+        background-repeat: no-repeat;
+        animation: loading 1.5s infinite;
+        ;
+    }
+}
 
 @keyframes loading{
     to{
@@ -50,5 +92,5 @@ body{
     align-items: center;
     min-height: 100vh;
     background-color: white;
-    font-family: 'operator mono' monospace;
+    font-family: 'operator mono', monospace;
 }
